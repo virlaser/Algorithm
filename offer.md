@@ -294,5 +294,52 @@ public class Solution {
 }
 ```
 
+# 9.矩形覆盖
+>我们可以用2\*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2\*1的小矩形无重叠地覆盖一个2\*n的大矩形，总共有多少种方法？
+
+* 动态规划
+
+```java
+public class Solution {
+    public int RectCover(int target) {
+        if(target == 0)
+            return 0;
+        if(target == 1)
+            return 1;
+        if(target == 2)
+            return 2;
+        int temp = 0;
+        int o1 = 1;
+        int o2 = 2;
+        for(int i = 2; i<target; i++) {
+            temp = o1 + o2;
+            o1 = o2;
+            o2 = temp;
+        }
+        return temp;
+    }
+}
+```
+
+# 10.二进制中1的个数
+
+>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
+
+* 位运算技巧
+
+```java
+public class Solution {
+    public int NumberOf1(int n) {
+        int count = 0;
+        while(n!=0) {
+            count ++;
+            n = n&(n-1);
+        }
+        return count;
+    }
+}
+```
+
+
 
 
